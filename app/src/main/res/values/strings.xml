@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">IntentReceiver</string>
+    <string name="title_activity_intent_receiver">IntentReceiver</string>
+</resources>
