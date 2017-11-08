@@ -29,6 +29,10 @@
             android:name=".ReceiverService"
             android:enabled="true"
             android:exported="true"></service>
+
+        <service android:name=".AidlService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
