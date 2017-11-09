@@ -5,5 +5,13 @@ package it.neslab.intentreceiver;
 
 interface ServiceInterface {
 
-    long getCallTime(long start, int mode, int n_tests);
+    long getCallTime();
+
+    long getStart();
+
+    long getIntentReceived();
+
+    int getMode();
+
+    int getNTests();
 }

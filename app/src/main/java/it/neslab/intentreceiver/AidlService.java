@@ -11,17 +11,48 @@ import android.support.annotation.Nullable;
  */
 
 public class AidlService extends Service {
+    private long intentReceived;
+    private long intentStartTime;
+    private int mode;
+    private int total;
+
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+        intentReceived = System.currentTimeMillis();
+        intentStartTime = intent.getLongExtra("starting", 0L);
+        mode = intent.getIntExtra("mode", 0);
+        total = intent.getIntExtra("n_tests", 0);
+
         return binder;
     }
 
     private final ServiceInterface.Stub binder = new ServiceInterface.Stub() {
 
         @Override
-        public long getCallTime(long start, int mode, int n_tests) throws RemoteException {
+        public long getCallTime() throws RemoteException {
             return System.currentTimeMillis();
+        }
+
+        @Override
+        public long getStart() throws RemoteException {
+            return intentStartTime;
+        }
+
+        @Override
+        public long getIntentReceived() throws RemoteException {
+            return intentReceived;
+        }
+
+        @Override
+        public int getMode() throws RemoteException {
+            return mode;
+        }
+
+        @Override
+        public int getNTests() throws RemoteException {
+            return total;
         }
     };
 }
