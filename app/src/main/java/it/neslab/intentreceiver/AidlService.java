@@ -6,6 +6,8 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
 
+import java.util.Map;
+
 /**
  * Created by stefano on 08/11/17.
  */
@@ -53,6 +55,11 @@ public class AidlService extends Service {
         @Override
         public int getNTests() throws RemoteException {
             return total;
+        }
+
+        @Override
+        public long testMethod(int a, double b, Map c) throws RemoteException {
+            return System.currentTimeMillis();
         }
     };
 }
